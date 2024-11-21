@@ -1,0 +1,278 @@
+// Define a class
+class Car {
+    String brand;
+    String color;
+    int speed;
+
+    // Default Constructor
+    public Car() {
+        brand = "Unknown";
+        color = "White";
+        speed = 0;
+    }
+
+    // Parameterized Constructor
+    public Car(String brand, String color, int speed) {
+        this.brand = brand;
+        this.color = color;
+
+        this.speed = speed;
+    }
+
+    // Method to display car details
+    public void displayDetails() {
+        System.out.println("Brand: " + brand);
+        System.out.println("Color: " + color);
+        System.out.println("Speed: " + speed + " km/h");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        // Create an object using the default constructor
+        Car car1 = new Car();
+        System.out.println("Details of Car1:");
+        car1.displayDetails();
+
+        Car car2 = new Car("Toyota", "Red", 120);
+        System.out.println("\nDetails of Car2:");
+        car2.displayDetails();
+    }
+}
+
+********
+rectangle
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Rectangle rect1 = new Rectangle();
+        System.out.println("Default Rectangle:");
+        System.out.println("Area: " + rect1.calculateArea());
+        System.out.println("Perimeter: " + rect1.calculatePerimeter());
+
+        System.out.println("\nEnter width for custom rectangle:");
+        double width = scanner.nextDouble();
+
+        System.out.println("Enter height for custom rectangle:");
+        double height = scanner.nextDouble();
+
+        Rectangle rect2 = new Rectangle(width, height);
+        System.out.println("\nCustom Rectangle (from user input):");
+        System.out.println("Area: " + rect2.calculateArea());
+        System.out.println("Perimeter: " + rect2.calculatePerimeter());
+
+        scanner.close();
+    }
+}
+
+class Rectangle {
+
+    private double width;
+    private double height;
+
+    // Default Constructor
+    public Rectangle() {
+        width = 1;
+        height = 1;
+    }
+
+    // Parameterized Constructor
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    // Method to calculate area
+    public double calculateArea() {
+        return width * height;
+    }
+
+    // Method to calculate perimeter
+    public double calculatePerimeter() {
+        return 2 * (width + height);
+    }
+}
+
+********** circle
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Using default constructor
+        Circle circle1 = new Circle();
+        System.out.println("Default Circle:");
+        System.out.println("Area: " + circle1.calculateArea());
+        System.out.println("Circumference: " + circle1.calculateCircumference());
+
+        // Taking user input for custom circle
+        System.out.println("\nEnter radius for custom circle:");
+        double radius = scanner.nextDouble();
+
+        // Using parameterized constructor with user input
+        Circle circle2 = new Circle(radius);
+        System.out.println("\nCustom Circle (from user input):");
+        System.out.println("Area: " + circle2.calculateArea());
+        System.out.println("Circumference: " + circle2.calculateCircumference());
+
+        scanner.close();
+    }
+}
+
+class Circle {
+
+    private double radius;
+
+    // Default Constructor
+    public Circle() {
+        radius = 1.0;
+    }
+
+    // Parameterized Constructor
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Method to calculate area of circle
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    // Method to calculate circumference of circle
+    public double calculateCircumference() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+******
+get user input**
+
+import java.util.Scanner;
+
+public class UserInput {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Name: " + name);
+        scanner.close();
+    }
+}
+
+******* interest calculation
+
+import java.util.Scanner;
+
+class Loan {
+
+    private double principal;
+    private double rate;
+    private int time;
+
+    public Loan(double principal, double rate, int time) {
+        this.principal = principal;
+        this.rate = rate;
+        this.time = time;
+    }
+
+    public double calculateInterest() {
+        return (principal * rate * time) / 100;
+    }
+}
+
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter principal amount: ");
+        double principal = scanner.nextDouble();
+
+        System.out.print("Enter rate of interest: ");
+        double rate = scanner.nextDouble();
+
+        System.out.print("Enter time period (in years): ");
+        int time = scanner.nextInt();
+
+        Loan loan = new Loan(principal, rate, time);
+
+        double interest = loan.calculateInterest();
+        System.out.println("The Simple Interest is: " + interest);
+
+        scanner.close();
+    }
+}
+
+
+************BMI****
+import java.util.Scanner;
+
+class BMI {
+
+    private double weight; // in kilograms
+    private double height; // in meters
+
+    // Constructor to initialize weight and height
+    public BMI(double weight, double height) {
+        this.weight = weight;
+        this.height = height;
+    }
+
+    // Method to calculate BMI
+    public double calculateBMI() {
+        return weight / (height * height);
+    }
+
+    // Method to determine BMI category
+    public String getCategory() {
+        double bmi = calculateBMI();
+        if (bmi < 18.5) {
+            return "Underweight";
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+            return "Normal weight";
+        } else if (bmi >= 25 && bmi < 29.9) {
+            return "Overweight";
+        } else {
+            return "Obese";
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get user input for weight and height
+        System.out.print("Enter your weight (in kg): ");
+        double weight = scanner.nextDouble();
+
+        System.out.print("Enter your height (in meters): ");
+        double height = scanner.nextDouble();
+
+        // Create BMI object using user input
+        BMI bmi = new BMI(weight, height);
+
+        // Calculate BMI and determine category
+        double bmiValue = bmi.calculateBMI();
+        String category = bmi.getCategory();
+
+        // Display results
+        System.out.printf("\nYour BMI is: %.2f\n", bmiValue);
+        System.out.println("You are classified as: " + category);
+
+        // Close the scanner
+        scanner.close();
+    }
+}
+
+
+
+
+
+
+
+
